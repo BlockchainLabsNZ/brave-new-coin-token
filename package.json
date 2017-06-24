@@ -1,0 +1,20 @@
+{
+  "name": "BNC",
+  "version": "1.0.0",
+  "description": "Token Contract for Brave new Coin",
+  "main": "truffle.js",
+  "author": "Klaus Daniel Hott Vidal",
+  "license": "MIT",
+  "scripts": {
+    "build": "yarn truffle compile",
+    "deploy": "yarn truffle migrate",
+    "test": "yarn truffle test",
+    "arguments": "node scripts/arguments.js"
+  },
+  "dependencies": {
+    "truffle": "^3.2.5"
+  },
+  "devDependencies": {
+    "prettier": "^1.4.4"
+  }
+}
