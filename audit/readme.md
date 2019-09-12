@@ -183,7 +183,7 @@ Minime framework uses mappings to store every single balanceOfAt, totalSupplyAt 
 
 ## Conclusion
 
-Overall we have not identified any potential vulnerabilities. This contract has a low level risk of XID being hacked or stolen from the inspected contracts.
+Overall we have not identified any potential vulnerabilities. This contract has a low level risk of **BNC** being hacked or stolen from the inspected contracts.
 
 <br><!-- *********************************************** -->
 <hr>
