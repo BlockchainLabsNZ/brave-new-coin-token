@@ -5,9 +5,9 @@ Prepared by:
 
 - Alex Tikonoff, [alex@blockchainlabs.nz](alex@blockchainlabs.nz)
 
-Report:
+Last updated:
 
-- September 13, 2019 – date of delivery
+- September 13, 2019
 
 <br>
 
@@ -119,31 +119,15 @@ Testing was focused on the following key areas - though this is not an exhaustiv
 
 ### Minor
 
-- **Functions should throw an error instead of returning false** -`Best practice` <br>
+- **Functions should throw an error instead of returning false** - `Best practice` <br>
 It is consider to be better solution to use `revert()` or `require()` instead of `return false` to signal that the function can not complete.
 A big advantage of this tactic is that most wallet software will give you a warning that the transaction will not go through before you make the transaction. And Etherscan or some other blockchain explorers would show the tx as successful if it doesn’t return revert opcode.
-This issue has been fixed in the latest version of MiniMe.
-	- [ ] Not fixed
-	
-- **Get rid of MiniMe structures for saving gas** -`Best practice` <br>
-MiniMe uses mappings to store every single balanceOfAt, totalSupplyAt which increases gas usage.
-Suggest to get rid of MiniMe structure and consider implementing lightweight token functions(like ERC20 standard).
-	- [ ] Not fixed
+This has been addressed in the later versions of MiniMe after this contract was deployed.
 
 
 ### Moderate
 
-
-<br>
-
-### Major
-
-
-- **outdated version of MiniMe framework** -`Best practice` <br>
-It is using a previous version of MiniMe token in the contract. There are a few of improvements have been made in those releases. We suggest to update it to the latest version.
-	- [ ] Not fixed
-
-- **transfer() and transferFrom() functions don’t comply with ERC20 standard** -`Best practice`<br>
+- **transfer() and transferFrom() functions don’t allow 0 transfer amount** - `Best practice`<br>
 According to [ERC20 specification](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md#transfer), transfers of 0 values MUST be treated as normal transfers and fire the Transfer event.
 But `doTransfer()` function in [line 207](https://github.com/BlockchainLabsNZ/brave-new-coin-token/blob/104348f0df723394109456bb9041e26cedf7f5ce/contracts/MiniMeToken.sol#L207) returning `true` to `transfer()` function and it does not fire the `Transfer()` event in this case .
 
@@ -156,17 +140,19 @@ But `doTransfer()` function in [line 207](https://github.com/BlockchainLabsNZ/br
 
 	```
 
-	- [ ] Not fixed 	(*This issue has been fixed in the latest version of MiniMe.*)
 
+<br>
 
+### Major
+
+- None found
+<br>
 
 ### Critical
 
 - None found
 
 <br>
-
-
 
 
 ## Observations
@@ -177,6 +163,8 @@ This control bestows onto the controller full control over the token contract, i
 ### Extra Mappings
 Minime framework uses mappings to store every single balanceOfAt, totalSupplyAt this increases the relative gas cost of transactions when compared to other frameworks. If these mapping are not required consider a simpler framework for additional gas savings.
 
+### MiniMe framework version is now outdated.
+BNC token is using a previous version of MiniMe token in the contract. There are a few of improvements have been made in those releases. We suggest to update it to the latest version.
 
 
 <br><!-- *********************************************** -->
